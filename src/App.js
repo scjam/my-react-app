@@ -19,9 +19,10 @@ export default class App extends React.Component {
     return (
       <div className="App">
         {
-          this.state.movieData.map(movie =>
+          this.state.movieData.map((movie, i) =>
             { return (
               <MovieRender 
+              key={i}
               uniqueId={movie.id}
               movieName={movie.name}
               yearReleased={movie.year_released}
