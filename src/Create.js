@@ -26,7 +26,8 @@ export default class Create extends Component {
             director_id: this.state.directorId,
             owner_id: localStorageUser.userId
         };
-
+        console.log(newMovie);
+        
         await request
             .post('https://warm-brushlands-73236.herokuapp.com/movies')
             .send(newMovie);
