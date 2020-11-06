@@ -36,7 +36,7 @@ export default class Create extends Component {
     render() {
         return (
             <div>
-                <h3>Add a movie</h3>
+                <h3>Add a Movie</h3>
                 <form onSubmit={this.handleSubmit}>
                     <p>
                         <label>
@@ -53,7 +53,10 @@ export default class Create extends Component {
                     <p>
                         <label>
                         Did it win best picture?:
-                        <input onChange={e => this.setState({ bestPictureWinner: e.target.value})} type="boolean" />
+                        <input 
+                        selected={this.state.bestPictureWinner}
+                        onChange={e => this.setState({ bestPictureWinner: e.target.value})} 
+                        type="checkbox" />
                         </label>
                     </p>
                     <p>

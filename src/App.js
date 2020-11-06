@@ -5,6 +5,7 @@ import Home from './Home.js';
 import Create from './Create.js';
 import List from './List.js';
 import Update from './Update.js';
+import Header from './Header.js'
 import {
   BrowserRouter as Router, 
   Route, 
@@ -17,6 +18,7 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <Router>
+          <Header />
           <Switch>
             <Route 
               path="/"
@@ -29,7 +31,7 @@ export default class App extends React.Component {
               render={(routerProps) => <Create {...routerProps} />}
             />
             <Route 
-              path="/update/:id"
+              path="/movies/:id"
               exact
               render={(routerProps) => <Update {...routerProps} />}
             />

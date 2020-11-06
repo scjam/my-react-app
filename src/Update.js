@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchDirectors, updateMovie, fetchMovie } from './Utils.js';
+import { fetchDirectors, updateMovie, fetchMovie, deleteMovie } from './Utils.js';
 
 const localStorageUser = {
     userId: 1
@@ -18,7 +18,6 @@ export default class Update extends Component {
         const directors = await fetchDirectors();
         const movie = await fetchMovie(this.props.match.params.id);
         const stringDirectorName = movie.director;
-
         const matchingDirector = directors.find((director) => {
             return director.name === stringDirectorName
         });
@@ -43,7 +42,8 @@ export default class Update extends Component {
                 best_picture_winner: this.state.bestPictureWinner,
                 director_id: this.state.directorId,
                 owner_id: localStorageUser.userId
-        });
+            }
+        );
 
         this.props.history.push('/');
     }
@@ -52,10 +52,18 @@ export default class Update extends Component {
         this.setState({ directorId: e.target.value });
     }
     
+    handleDelete = async (e) => {
+        e.preventDefault();
+
+        await deleteMovie(this.props.match.params.id);
+
+        this.props.history.push('/');
+    }
+
     render() {
         return (
             <div>
-                Update a movie
+                Update or Delete a Movie
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Name:
@@ -74,9 +82,9 @@ export default class Update extends Component {
                     <label>
                         Did it win best picture?:
                         <input 
-                        value={this.state.bestPictureWinner}
+                        selected={this.state.bestPictureWinner}
                         onChange={e => this.setState({ bestPictureWinner: e.target.value})} 
-                        type="boolean" />
+                        type="checkbox" />
                     </label>
                     <label>
                         Director: 
@@ -93,6 +101,7 @@ export default class Update extends Component {
                         </select>
                     </label>
                     <button>Submit</button>
+                    <button onClick={this.handleDelete}>Delete</button>
                 </form>
             </div>
         )

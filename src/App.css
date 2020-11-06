@@ -14,7 +14,7 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   text-align: center;
   background-color: var(--color3);
-  padding: 5px;
+  padding: 20px;
 }
 
 h2 {
@@ -37,6 +37,16 @@ h2 {
   font-size: 1.2em;
 }
 
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  background-color: var(--color3);
+  height: var(--header-height);
+  box-shadow: var(--shadow);
+  padding: 5%;
+  font-size: 1.4em;
+}
 img {
   width: 650px;
   height: auto;
