@@ -36,21 +36,28 @@ export default class Create extends Component {
     render() {
         return (
             <div>
-                Add a movie
+                <h3>Add a movie</h3>
                 <form onSubmit={this.handleSubmit}>
-                    <label>
+                    <p>
+                        <label>
                         Name:
                         <input onChange={e => this.setState({ name: e.target.value})} type="text" />
-                    </label>
-                    <label>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
                         Year Released: 
                         <input onChange={e => this.setState({ yearReleased: e.target.value})} type="number" />
-                    </label>
-                    <label>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
                         Did it win best picture?:
                         <input onChange={e => this.setState({ bestPictureWinner: e.target.value})} type="boolean" />
-                    </label>
-                    <label>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
                         Director: 
                         <select onChange={this.handleChange}>
                             {
@@ -59,7 +66,8 @@ export default class Create extends Component {
                                 </option>)
                             }
                         </select>
-                    </label>
+                        </label>
+                    </p>
                     <button>Submit</button>
                 </form>
             </div>

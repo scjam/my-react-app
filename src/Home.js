@@ -5,8 +5,7 @@ export default class Home extends Component {
     render() {
         return (
             <div className="home">
-                <h2>Hello and Welcome</h2>
-                <p>To the Nineties Movie Page</p>
+                <h2>Welcome to the Nineties Movie Page</h2>
                 <ul>
                     <li>
                         <Link to="/">Home</Link>
@@ -18,6 +17,7 @@ export default class Home extends Component {
                         <Link to="/create">Add a Movie!</Link>
                     </li>
                 </ul>
+                <img src="../90s.jpg" alt="Nineties Collage" />
             </div>
         )
     }
