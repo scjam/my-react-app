@@ -4,6 +4,7 @@ import React from 'react';
 import Home from './Home.js';
 import Create from './Create.js';
 import List from './List.js';
+import Update from './Update.js';
 import {
   BrowserRouter as Router, 
   Route, 
@@ -26,6 +27,11 @@ export default class App extends React.Component {
               path="/create"
               exact
               render={(routerProps) => <Create {...routerProps} />}
+            />
+            <Route 
+              path="/update/:id"
+              exact
+              render={(routerProps) => <Update {...routerProps} />}
             />
             <Route 
               path="/list"

@@ -1,8 +1,10 @@
 import request from 'superagent';
 
+const URL = process.env.REACT_APP_API_URL || 'https://warm-brushlands-73236.herokuapp.com/';
+
 export async function fetchMovies() {
     try {
-        const response = await request.get('https://warm-brushlands-73236.herokuapp.com/movies');
+        const response = await request.get(`${URL}movies`);
 
         return response.body;
     } catch(err) {
@@ -12,7 +14,7 @@ export async function fetchMovies() {
 
 export async function fetchMovie(someId) {
     try {
-        const response = await request.get(`https://warm-brushlands-73236.herokuapp.com/movies/${someId}`);
+        const response = await request.get(`${URL}movies/${someId}`);
 
         return response.body;
     } catch(err) {
@@ -22,7 +24,7 @@ export async function fetchMovie(someId) {
 
 export async function fetchDirectors() {
     try {
-        const response = await request.get('https://warm-brushlands-73236.herokuapp.com/directors');
+        const response = await request.get(`${URL}directors`);
 
         return response.body;
     } catch(err) {
@@ -33,7 +35,7 @@ export async function fetchDirectors() {
 export async function createMovie(newMovie) {
     try {
         await request
-        .post('https://warm-brushlands-73236.herokuapp.com/movies')
+        .post(`${URL}movies`)
         .send(newMovie);
 
         return;
@@ -45,7 +47,7 @@ export async function createMovie(newMovie) {
 export async function updateMovie(someId, newMovie) {
     try {
         await request
-        .put(`https://warm-brushlands-73236.herokuapp.com/movies/${someId}`)
+        .put(`${URL}movies/${someId}`)
         .send(newMovie);
 
         return;
@@ -56,7 +58,7 @@ export async function updateMovie(someId, newMovie) {
 
 export async function deleteMovie(someId) {
     try {
-        await request.delete(`https://warm-brushlands-73236.herokuapp.com/movies/${someId}`);
+        await request.delete(`${URL}movies/${someId}`);
 
         return;
     } catch(err) {
