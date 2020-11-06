@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import request from 'superagent';
 
-export default class MovieRender extends Component {
+export default class List extends Component {
     state = {
         movies: []
     }

@@ -1,8 +1,9 @@
 import './App.css';
 import React from 'react';
 //import fetch from 'superagent';
-import MovieRender from './MovieRender.js';
+import Home from './Home.js';
 import Create from './Create.js';
+import List from './List.js';
 import {
   BrowserRouter as Router, 
   Route, 
@@ -19,12 +20,17 @@ export default class App extends React.Component {
             <Route 
               path="/"
               exact
-              render={(routerProps) => <MovieRender {...routerProps} />}
+              render={(routerProps) => <Home {...routerProps} />}
             />
             <Route 
               path="/create"
               exact
               render={(routerProps) => <Create {...routerProps} />}
+            />
+            <Route 
+              path="/list"
+              exact
+              render={(routerProps) => <List {...routerProps} />}
             />
           </Switch>
         </Router>
