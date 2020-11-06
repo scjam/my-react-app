@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { fetchMovies } from './Utils.js';
 import { Link } from 'react-router-dom';
 import MovieRender from './MovieRender.js'
 
-export default class List extends Component {
+export default class List extends React.Component {
     state = {
         movies: []
     }
@@ -18,7 +18,7 @@ export default class List extends Component {
         const { movies } = this.state;
         return (
             <>
-                <p><Link to="/create" className="links">
+                <p><Link to="/Create" className="links">
                     Add a Movie!
                 </Link></p>
                 <p><Link to="/movies/:id" className="links">

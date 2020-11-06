@@ -1,6 +1,5 @@
 import './App.css';
 import React from 'react';
-//import fetch from 'superagent';
 import Home from './Home.js';
 import Create from './Create.js';
 import List from './List.js';
