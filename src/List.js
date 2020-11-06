@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import request from 'superagent';
+import { fetchMovies } from './Utils.js';
 
 export default class List extends Component {
     state = {
@@ -7,17 +7,18 @@ export default class List extends Component {
     }
     
     componentDidMount = async () => {
-        const response = await request.get('https://warm-brushlands-73236.herokuapp.com/movies');
+        const movies = await fetchMovies();
 
-        this.setState({ movies: response.body });
+        this.setState({ movies });
     }
     
     render() {
+        const { movies } = this.state;
         return (
             <div className="item">
                 {
-                    this.state.movies.length > 0
-                    ? this.state.movies.map(movie => <div>
+                    movies.length > 0
+                    ? movies.map(movie => <div>
                         <p>Name: {movie.name}</p>
                         <p>Year Released: {movie.year_released}</p>
                         <p>Best Picture Winner?: {movie.best_picture_winner ? 'Yes' : 'No'}</p>
