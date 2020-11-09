@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { fetchDirectors, createMovie } from './Utils.js';
+import React, { Component } from 'react';
+import request from 'superagent';
 
 const localStorageUser = {
     userId: 1
@@ -10,23 +10,44 @@ export default class Create extends Component {
         directors: []
     }
 
+    getAllDirectors = async () => {
+        const response = await request.get(`https://warm-brushlands-73236.herokuapp.com/directors`);
+        this.setState({ directors: response.body });
+    }
+    
     componentDidMount = async () => {
-        const directors = await fetchDirectors();
-
-        this.setState({ directors });
+        this.getAllDirectors()
     }
 
     handleSubmit = async (e) => {
         e.preventDefault();
         
-        await createMovie({
+        const createMovie = {
             name: this.state.name,
             year_released: this.state.yearReleased,
             best_picture_winner: this.state.bestPictureWinner,
             director_id: this.state.directorId,
             owner_id: localStorageUser.userId
-        });
+        };
+
+        await request
+            .post(`https://warm-brushlands-73236.herokuapp.com/movies`)
+            .send(createMovie)
         this.props.history.push('/');
+    }
+
+    handleDirector = async (e) => {
+        e.preventDefault();
+        const createDirector = {
+            name: this.state.directorName,
+        };
+
+        await request
+            .post(`https://warm-brushlands-73236.herokuapp.com/directors`)
+            .send(createDirector)
+            this.getAllDirectors()
+            this.setState({ directorName: '' 
+        });
     }
 
     handleChange = (e) => {
@@ -36,7 +57,7 @@ export default class Create extends Component {
     render() {
         return (
             <div>
-                <h3>Add a movie</h3>
+                <h3>Add a Movie</h3>
                 <form onSubmit={this.handleSubmit}>
                     <p>
                         <label>
@@ -53,21 +74,35 @@ export default class Create extends Component {
                     <p>
                         <label>
                         Did it win best picture?:
-                        <input onChange={e => this.setState({ bestPictureWinner: e.target.value})} type="boolean" />
+                        <input 
+                        selected={this.state.bestPictureWinner}
+                        onChange={e => this.setState({ bestPictureWinner: e.target.value})} 
+                        type="checkbox" />
                         </label>
                     </p>
                     <p>
-                        <label>
                         Director: 
                         <select onChange={this.handleChange}>
                             {
-                                this.state.directors.map(director => <option key={director.id} value={director.id}>
+                                this.state.directors.map(director => 
+                                <option key={director.id} value={director.id}>
                                     {director.name}
                                 </option>)
                             }
                         </select>
-                        </label>
                     </p>
+                    <button>Submit</button>
+                </form>
+                <h3>Add a Director</h3>
+                <form onSubmit={this.handleDirector}>
+                    <label>
+                        Director Name:
+                        <input 
+                            onChange={e => this.setState({ directorName: e.target.value })} 
+                            type="text" 
+                            value={this.state.directorName} 
+                        />
+                    </label>
                     <button>Submit</button>
                 </form>
             </div>

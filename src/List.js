@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { fetchMovies } from './Utils.js';
+import { Link } from 'react-router-dom';
+import MovieRender from './MovieRender.js'
 
-export default class List extends Component {
+export default class List extends React.Component {
     state = {
         movies: []
     }
@@ -15,19 +17,32 @@ export default class List extends Component {
     render() {
         const { movies } = this.state;
         return (
-            <div className="item">
-                {
-                    movies.length > 0
-                    ? movies.map(movie => <div>
-                        <p>Name: {movie.name}</p>
-                        <p>Year Released: {movie.year_released}</p>
-                        <p>Best Picture Winner?: {movie.best_picture_winner ? 'Yes' : 'No'}</p>
-                        <p>Director: {movie.director}</p>
-                        </div>)
-                        : 'loading'
-                }
-                
-            </div>
+            <>
+                <p><Link to="/Create" className="links">
+                    Add a Movie!
+                </Link></p>
+                <p><Link to="/movies/:id" className="links">
+                    Movie Details
+                </Link></p>
+                <div className="item">
+                    {
+                        this.state.movies.map(movie => 
+                        { return (
+                            <Link to={`movies/${movies.id}`} >
+                                <MovieRender 
+                                movieId={movie.id}
+                                name={movie.name}
+                                yearReleased={movie.year_released}
+                                bestPictureWinner={movie.best_picture_winner}
+                                director={movie.director}
+                                ownerId={movie.owner_id}
+                                />
+                            </Link>
+                            )
+                        })
+                    }
+                </div>
+            </>
         )
     }
 }
