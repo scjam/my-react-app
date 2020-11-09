@@ -76,7 +76,7 @@ export default class Create extends Component {
                         Did it win best picture?:
                         <input 
                         selected={this.state.bestPictureWinner}
-                        onChange={e => this.setState({ bestPictureWinner: e.target.value})} 
+                        onClick={e => this.setState({ bestPictureWinner: e.target.value})} 
                         type="checkbox" />
                         </label>
                     </p>
