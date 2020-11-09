@@ -48,10 +48,6 @@ export default class Update extends Component {
         this.props.history.push('/');
     }
 
-    handleChange = (e) => {
-        this.setState({ directorId: e.target.value });
-    }
-    
     handleDelete = async (e) => {
         e.preventDefault();
 
@@ -82,8 +78,8 @@ export default class Update extends Component {
                     <label>
                         Did it win best picture?:
                         <input 
-                        selected={this.state.bestPictureWinner}
-                        onChange={e => this.setState({ bestPictureWinner: e.target.value})} 
+                        checked={this.state.bestPictureWinner}
+                        onChange={e => this.setState({ bestPictureWinner: e.target.checked })} 
                         type="checkbox" />
                     </label>
                     <label>

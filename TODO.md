@@ -1,14 +1,15 @@
 # my-react-app
 
-1. Add a Detail/Update page at <items>:id.
+<!-- 1. Add a Detail/Update page at <items>:id.
    - On this page, there should be a form, pre-populated with the item's information.
-   - On submit, call your /PUT route to update this item, then route back to the home page.
-2. Delete button on detail/update page to delete item
-   - Reroute to list using this.props.history.push('/')
-3. pdate Home/List page
-   - Add links on the Home/List page so that when you click on an item it takes you to the update page for that item.
-   - STRETCH: Add a dropdown to the list page to filter items on the client side (no need for a new fetch to make a new filter).
-4. Refactor api calls in a separate utils file. Make functions called makeItem, deleteItem, updateItem, and createItem that take appropriate input and hit your api.
+   - On submit, call your /PUT route to update this item, then route back to the home page. -->
+<!-- 2. Delete button on detail/update page to delete item
+   - Reroute to list using this.props.history.push('/') -->
+<!-- 3. Update Home/List page
+   - Add links on the Home/List page so that when you click on an item it takes you to the update page for that item. -->
+
+- STRETCH: Add a dropdown to the list page to filter items on the client side (no need for a new fetch to make a new filter).
+<!-- 4. Refactor api calls in a separate utils file. Make functions called makeItem, deleteItem, updateItem, and createItem that take appropriate input and hit your api. -->
 
 Points (10)
 
